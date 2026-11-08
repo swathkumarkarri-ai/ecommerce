@@ -4,12 +4,14 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "payment-service")
+@FeignClient(name = "PAYMENT-SERVICE")
 public interface PaymentClient {
 
-    @PostMapping("/api/payments")
-    String processPayment(@RequestBody PaymentRequest paymentRequest);
+    @PostMapping("/api/payments/process")
+    void processPayment(@RequestBody Object paymentRequest);
 
-    // DTO record/class for payment request
-    record PaymentRequest(String orderNumber, Double amount) {}
+    public class PaymentRequest {
+        public PaymentRequest(String orderNumber, Double totalAmount) {
+        }
+    }
 }

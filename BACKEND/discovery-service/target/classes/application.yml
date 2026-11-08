@@ -12,7 +12,6 @@ eureka:
   server:
     enable-self-preservation: false
 
-
 spring:
   application:
     name: discovery-service
